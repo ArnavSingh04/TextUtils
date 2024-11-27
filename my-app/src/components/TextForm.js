@@ -5,11 +5,22 @@ export default function TextForm(props) {
     const handleUpClick = () => {
       let newText = text.toUpperCase()
       setText(newText);
+      props.showAlert("Converted to UpperCase", "success")
     };
     
+    const countWords = ()=> {
+      if (text.trimEnd().length === 0){
+        return 0;
+      }
+      else{
+        return text.trimEnd().split(" ").length;
+      }
+    };
+
     const handleLowClick = () => {
-      let newText = text.toLocaleLowerCase()
+      let newText = text.toLowerCase()
       setText(newText);
+      props.showAlert("Converted to LowerCase", "success")
     };
     
     const handleOnChange = (event)=>{
@@ -42,7 +53,7 @@ export default function TextForm(props) {
         </div>
         <div className="container my-3" style={{color : props.mode==='light'?'black':'white'}}>
           <h2>Your text summary</h2>
-          <p>{text.split(" ").length} words, {text.length} characters</p>
+          <p>{countWords()} words, {text.length} characters</p>
           <p>Time to read content = {text.split(" ").length*0.008} minutes</p>
           <h2>Preview</h2>
           <p>{text.length>0?text:"Text in textbox will show here"}</p>
