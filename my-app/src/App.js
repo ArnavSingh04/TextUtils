@@ -17,13 +17,11 @@ function App() {
       setMode("light")
       document.body.style.background = 'white';
       showAlert('Light mode has been Enabled!', 'success');
-      document.title = 'TextUtils - Light Mode';
     }
     else{
       setMode("dark")
       document.body.style.background = '#042743';
       showAlert('Dark mode has been Enabled!', 'success');
-      document.title = 'TextUtils - Dark Mode'
     }
   }
 
@@ -44,7 +42,7 @@ function App() {
         <Alert alert={alert}/>
         <div className="container my-3">
           <Routes>
-            <Route exact path="/about" element={<About />} />
+            <Route exact path="/about" element={<About mode={mode}/>}/>
             <Route exact path="/" element={<TextForm heading="Enter the text to analyse:" mode={mode} showAlert={showAlert} />} />
           </Routes>
         </div>
