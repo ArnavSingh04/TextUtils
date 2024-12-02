@@ -13,7 +13,7 @@ export default function TextForm(props) {
         return 0;
       }
       else{
-        return text.trimEnd().split(" ").length;
+        return text.trimEnd().split(/\s+/).length;
       }
     };
 
